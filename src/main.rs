@@ -1,5 +1,3 @@
-#![feature(asm)]
-
 use rustix::process::uname;
 use std::fs;
 use std::io::{BufRead, BufReader};
