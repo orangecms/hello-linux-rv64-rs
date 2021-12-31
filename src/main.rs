@@ -14,13 +14,12 @@ fn main() {
     f = "/proc/meminfo";
     match fs::File::open(f) {
         Ok(file) => {
-            let mut lines = BufReader::new(file).lines();
             println!("meminfo:");
-            for _ in 0..3 {
-                if let Some(l) = lines.next() {
-                    println!("{}", l.unwrap());
-                }
-            }
+            BufReader::new(file)
+                .lines()
+                .take(3)
+                .filter_map(Some)
+                .for_each(|l| println!("{}", l.unwrap()));
             println!();
         }
         Err(e) => println!("{}\n", e),
