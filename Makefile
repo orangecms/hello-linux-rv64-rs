@@ -7,7 +7,7 @@ riscv:
 	cargo build --release --target riscv64gc-unknown-linux-gnu
 
 aarch64:
-	cargo build --release --target aarch64-unknown-linux-gnueabi
+	cargo build --release --target aarch64-unknown-linux-gnu
 
 arm:
 	cargo build --release --target arm-unknown-linux-gnueabi
