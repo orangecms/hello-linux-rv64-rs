@@ -1,6 +1,15 @@
-[build]
-target = "riscv64gc-unknown-linux-gnu"
+[target.x86_64-unknown-linux-gnu]
+linker = "x86_64-linux-gnu-gcc"
+rustflags = [ "-C", "target-feature=+crt-static" ]
 
 [target.riscv64gc-unknown-linux-gnu]
 linker = "riscv64-linux-gnu-gcc"
+rustflags = [ "-C", "target-feature=+crt-static" ]
+
+[target.arm-unknown-linux-gnueabi]
+linker = "arm-linux-gnueabi-gcc"
+rustflags = [ "-C", "target-feature=+crt-static" ]
+
+[target.aarch64-unknown-linux-gnu]
+linker = "aarch64-linux-gnueabi-gcc"
 rustflags = [ "-C", "target-feature=+crt-static" ]
