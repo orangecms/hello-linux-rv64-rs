@@ -3,6 +3,18 @@
 version = 3
 
 [[package]]
+name = "bare-metal"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f8fe8f5a8a398345e52358e18ff07cc17a568fbca5c6f73873d3a62056309603"
+
+[[package]]
+name = "bit_field"
+version = "0.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dcb6dd1c2376d2e096796e234a70e17e94cc2d5d54ff8ce42b28cef1d0d359a4"
+
+[[package]]
 name = "bitflags"
 version = "1.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -13,6 +25,16 @@ name = "cc"
 version = "1.0.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "22a9137b95ea06864e018375b72adfb7db6e6f68cfc8df5a04d00288050485ee"
+
+[[package]]
+name = "embedded-hal"
+version = "0.2.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "35949884794ad573cf46071e41c9b60efb0cb311e3ca01f7af807af1debc66ff"
+dependencies = [
+ "nb 0.1.3",
+ "void",
+]
 
 [[package]]
 name = "errno"
@@ -39,6 +61,7 @@ dependencies = [
 name = "hello-rust"
 version = "0.1.0"
 dependencies = [
+ "riscv",
  "rustix",
 ]
 
@@ -64,6 +87,32 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a261afc61b7a5e323933b402ca6a1765183687c614789b1e4db7762ed4230bca"
 
 [[package]]
+name = "nb"
+version = "0.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "801d31da0513b6ec5214e9bf433a77966320625a37860f910be265be6e18d06f"
+dependencies = [
+ "nb 1.0.0",
+]
+
+[[package]]
+name = "nb"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "546c37ac5d9e56f55e73b677106873d9d9f5190605e41a856503623648488cae"
+
+[[package]]
+name = "riscv"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5e2856a701069e2d262b264750d382407d272d5527f7a51d3777d1805b4e2d3c"
+dependencies = [
+ "bare-metal",
+ "bit_field",
+ "embedded-hal",
+]
+
+[[package]]
 name = "rustix"
 version = "0.31.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -76,6 +125,12 @@ dependencies = [
  "linux-raw-sys",
  "winapi",
 ]
+
+[[package]]
+name = "void"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d"
 
 [[package]]
 name = "winapi"

@@ -11,6 +11,19 @@ fn main() {
     let arch = "RISC-V";
     println!("Let's have a look at your shiny {} system! :)\n", arch);
 
+    #[cfg(any(target_arch = "riscv64", target_arch = "riscv32"))]
+    {
+        use riscv::register::{cycle, fcsr, time, uepc, ustatus, utval};
+        let f = fcsr::read();
+        let c = cycle::read();
+        let t = time::read();
+        println!("fcsr {:?} cycle {:?} time {:?}\n", f, c, t);
+        // let e = uepc::read();
+        // let s = ustatus::read();
+        // let t = utval::read();
+        // println!("uepc {:?} utval {:?} ustatus {:?} utval {:?}\n", e, s, t);
+    }
+
     let mut f = "/proc/cpuinfo";
     let cpuinfo = fs::read_to_string(f).expect("cpuinfo err");
     println!("cpuinfo:\n{}", cpuinfo);

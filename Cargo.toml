@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 rustix = "0.31.1"
+riscv = "0.8.0"
