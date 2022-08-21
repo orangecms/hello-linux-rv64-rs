@@ -25,6 +25,11 @@ cargo zigbuild --release
 ### Zig version
 You will need [Zig](https://www.ziglang.org/)
 
+```sh
+# zig version v0.10 or higher (default self-hosting compiler [stage2 or stage3]) 
+zig build -Drelease-safe|-Drelease-fast|-Drelease-small
+```
+
 ## Run via [`cpu`](https://github.com/u-root/cpu)
 
 ```sh
