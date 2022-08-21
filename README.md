@@ -19,7 +19,7 @@ or `zig` linker:
 ```sh
 cargo install cargo-zigbuild
 
-cargo build --release
+cargo zigbuild --release
 ```
 
 ### Zig version
