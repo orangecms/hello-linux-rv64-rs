@@ -23,7 +23,7 @@ cargo zigbuild --release
 ```
 
 ### Zig version
-You will need [Zig](https://www.ziglang.org/)
+You will need [Zig](https://ziglang.org/)
 
 ```sh
 # zig version v0.10 or higher (default self-hosting compiler [stage2 or stage3]) 
