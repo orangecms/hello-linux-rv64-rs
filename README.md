@@ -5,6 +5,8 @@ Linux on RISC-V 64.
 
 ## Build
 
+### Rust Version
+
 You will need [Rust](https://www.rust-lang.org/) and the linker from
 `riscv64-linux-gnu-gcc`.
 
@@ -12,9 +14,22 @@ You will need [Rust](https://www.rust-lang.org/) and the linker from
 cargo build --release
 ```
 
+or `zig` linker:
+
+```sh
+cargo install cargo-zigbuild
+
+cargo build --release
+```
+
+### Zig version
+You will need [Zig](https://www.ziglang.org/)
+
 ## Run via [`cpu`](https://github.com/u-root/cpu)
 
 ```sh
 cpu -key ~/.ssh/cpu_rsa -timeout9p 2000ms target-host \
   ./target/riscv64gc-unknown-linux-gnu/release/hello-rust
+  or
+  ./zig-out/bin/hello-zig
 ```
