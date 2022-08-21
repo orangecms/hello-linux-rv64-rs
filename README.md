@@ -27,7 +27,12 @@ You will need [Zig](https://ziglang.org/)
 
 ```sh
 # zig version v0.10 or higher (default self-hosting compiler [stage2 or stage3]) 
-zig build -Drelease-safe|-Drelease-fast|-Drelease-small -target arch-os-libc
+zig build -Drelease-safe|-Drelease-fast|-Drelease-small -Dtarget=arch-os-libc
+
+# specific target
+zig build -Drelease-safe|-Drelease-fast|-Drelease-small -Dtarget=riscv64-linux-musl -Dcpu=baseline_rv64+v # Allwinner D1
+
+# more features RISC-V: https://github.com/lupyuen/zig-bl602-nuttx/issues/1
 
 # execute
 zig build run
