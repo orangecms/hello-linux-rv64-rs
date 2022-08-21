@@ -37,4 +37,10 @@ pub fn main() !void {
     defer cmdline.close();
     _ = try cmdline.readAll(&cmdbuf);
     try stdout.print("cmdline:\n{s}\n", .{cmdbuf});
+
+    var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
+    defer arena.deinit();
+    const allocator = arena.allocator();
+    const uname = try std.ChildProcess.exec(.{ .allocator = allocator, .argv = &[_][]const u8{ "uname", "-a" } });
+    try stdout.print("kernel:\n{s}", .{uname.stdout});
 }

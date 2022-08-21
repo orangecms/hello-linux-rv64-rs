@@ -27,7 +27,13 @@ You will need [Zig](https://www.ziglang.org/)
 
 ```sh
 # zig version v0.10 or higher (default self-hosting compiler [stage2 or stage3]) 
-zig build -Drelease-safe|-Drelease-fast|-Drelease-small
+zig build -Drelease-safe|-Drelease-fast|-Drelease-small -target arch-os-libc
+
+# execute
+zig build run
+
+# all targets
+zig targets | jq .libc
 ```
 
 ## Run via [`cpu`](https://github.com/u-root/cpu)
