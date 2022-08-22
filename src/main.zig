@@ -33,12 +33,10 @@ pub fn main() !void {
     _ = try meminfo.readAll(&buf);
     try stdout.print("meminfo:\n{s}\n", .{buf});
 
-    var cmdbuf: [93]u8 = undefined;
     const cmdline = try filestream("/proc/cmdline", .{});
     defer cmdline.close();
-
-    _ = try cmdline.readAll(&cmdbuf);
-    try stdout.print("cmdline:\n{s}\n", .{cmdbuf});
+    try stdout.print("cmdline:\n", .{});
+    try stdoutFile.writeFileAll(cmdline, .{});
 
     // detect leak memory on (debug or ReleaseSafe)
     var safeAlloc = std.heap.GeneralPurposeAllocator(.{}){};
