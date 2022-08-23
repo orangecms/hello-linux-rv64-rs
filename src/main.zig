@@ -8,6 +8,7 @@ pub fn main() !void {
     // .riscv32 - don't work:
     // https://github.com/ziglang/zig/blob/c955379504d4866f9c474c50317b2a0da18ee631/lib/std/os/linux.zig#L35-L44
     const arch = switch (builtin.cpu.arch) {
+        .i386 => "x86",
         .x86_64 => "x86_64",
         .aarch64 => "ARM64",
         .riscv64 => "RISC-V",
@@ -37,12 +38,11 @@ pub fn main() !void {
     var stream_in = file_buffer.reader();
 
     try stdout.print("meminfo:\n", .{});
-    var buf: [1024]u8 = undefined;
-    var index: usize = 0;
-    while (try stream_in.readUntilDelimiterOrEof(&buf, '\n')) |line| {
-        defer index += 1;
+    while (true) {
+        var line = try stream_in.readUntilDelimiterAlloc(allocator, '\n', 2048);
+        errdefer allocator.free(line);
         try stdout.print("{s}\n", .{line});
-        if (index > 1) break;
+        if (std.mem.startsWith(u8, line, "MemAvailable:")) break;
     }
 
     try stdout.print("\n", .{});
