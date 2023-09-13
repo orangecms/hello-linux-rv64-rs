@@ -13,3 +13,7 @@ rustflags = [ "-C", "target-feature=+crt-static" ]
 [target.aarch64-unknown-linux-gnu]
 linker = "aarch64-linux-gnu-gcc"
 rustflags = [ "-C", "target-feature=+crt-static" ]
+
+[target.mipsel-unknown-linux-musl]
+linker = "mipsel-linux-gnu-gcc"
+rustflags = [ "-C", "target-feature=+crt-static" ]

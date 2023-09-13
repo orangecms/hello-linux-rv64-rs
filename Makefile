@@ -11,3 +11,6 @@ aarch64:
 
 arm:
 	cargo build --release --target arm-unknown-linux-gnueabi
+
+mipsle:
+	cargo build --release --target mipsel-unknown-linux-musl

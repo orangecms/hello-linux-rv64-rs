@@ -1,4 +1,4 @@
-use rustix::process::uname;
+use rustix::system::uname;
 use std::fs;
 use std::io::{BufRead, BufReader};
 
@@ -7,6 +7,8 @@ fn main() {
     let arch = "x86";
     #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
     let arch = "ARM";
+    #[cfg(any(target_arch = "mips", target_arch = "mipsle"))]
+    let arch = "MIPS";
     #[cfg(any(target_arch = "riscv64", target_arch = "riscv32"))]
     let arch = "RISC-V";
     println!("Let's have a look at your shiny {} system! :)\n", arch);
@@ -34,5 +36,12 @@ fn main() {
     println!("cmdline:\n{}", cmdline);
 
     let kernel = uname();
-    println!("kernel:\n{:x?}", kernel);
+    println!(
+        "kernel:\n{:}/{:} {:}\n  version: {:} ({:})",
+        kernel.sysname().to_str().unwrap(),
+        kernel.nodename().to_str().unwrap(),
+        kernel.domainname().to_str().unwrap(),
+        kernel.release().to_str().unwrap(),
+        kernel.version().to_str().unwrap(),
+    );
 }

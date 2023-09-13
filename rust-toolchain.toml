@@ -1,4 +1,8 @@
 [toolchain]
-channel = "1.57"
+channel = "1.72"
 components = [ "rustfmt", "clippy" ]
-targets = [ "riscv64gc-unknown-linux-gnu" ]
+targets = [
+  "riscv64gc-unknown-linux-gnu",
+  "mipsel-unknown-linux-musl",
+  "aarch64-unknown-linux-gnu",
+]
